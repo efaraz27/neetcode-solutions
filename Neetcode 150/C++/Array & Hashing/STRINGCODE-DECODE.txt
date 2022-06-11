@@ -1,0 +1,42 @@
+class Solution {
+public:
+     string encode(vector<string> &strs) {
+        // write your code here
+        string res;
+        for(auto str : strs){
+            res += to_string(str.size()) + "#" + str;
+        }
+        return res;
+    }
+
+    /*
+     * @param str: A string
+     * @return: decodes a single string to a list of strings
+     */
+    vector<string> decode(string &str) {
+        // write your code here
+        vector<string> res;
+        int i = 0;
+        while(i < str.size()){
+            int j = i;
+            while(str[j] != '#')
+            {
+                j += 1;
+            }
+            int length = str_to_int(str.substr(i, j - i));
+            res.push_back(str.substr(j + 1, length));
+            i = j + length + 1;
+        }
+        return res;
+    }
+
+    int str_to_int(string str)
+    {
+        int res = 0;
+        for(int i = 0; i < str.size(); i++){
+            int num = str[i] - '0';
+            res = res * 10 + num;
+        }
+        return res;
+    }
+};

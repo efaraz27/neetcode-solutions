@@ -1,0 +1,37 @@
+class Solution {
+public:
+    T.C==>O(n)
+        s.c==>O(1)
+    vector<int> twoSum(vector<int>& numbers, int target) {
+        int st=0;
+        int end=numbers.size()-1;
+        int n=numbers.size();
+            while(numbers[st]+numbers[end]!=target){
+                if(numbers[st]+numbers[end]<target){
+                st++;
+            }
+            else{
+                end--;
+            }
+            }
+             return {st+1,end+1};
+    }
+    ///////////
+    T.C==>O(n)
+        s.c==>O(n)
+    vector<int> twoSum(vector<int>& numbers, int target) {
+        int i=0, j=numbers.size()-1;
+        vector<int> vec;
+        while(i < j) {
+            if(numbers[i] + numbers[j] > target) j--;
+            else if(numbers[i] + numbers[j] == target) {
+                vec.push_back(i+1);
+                vec.push_back(j+1);
+                return vec;
+            }
+            else i++;
+        }
+        return vec;
+    }
+};
+ 
