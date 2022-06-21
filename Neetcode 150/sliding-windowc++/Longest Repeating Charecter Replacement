@@ -1,0 +1,21 @@
+class Solution {
+public:
+    int characterReplacement(string s, int k) {
+     int st=0;
+        int max_len=0;
+        int max_cnt=0;
+        int n=s.size();
+        unordered_map<char,int>mp;
+        for(int i=0;i<s.size();i++){
+            mp[s[i]]++;
+            max_cnt=max(mp[s[i]],max_cnt);
+            if(i-st+1-max_cnt>k){
+                mp[s[st]]--;
+                st++;
+            }
+            max_len=max(max_len,i-st+1);
+        }
+        return max_len;
+    }
+};
+ 
